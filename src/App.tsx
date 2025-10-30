@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
@@ -8,15 +9,26 @@ function App() {
   const [name, setName] = useState("");
 
   async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
     setGreetMsg(await invoke("greet", { name }));
   }
 
   return (
     <main className="container">
-      <h1>Welcome to Tauri + React</h1>
+      <motion.h1
+        className="text-4xl font-bold text-center mt-8 text-blue-500"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        Welcome to Lumo ✨
+      </motion.h1>
 
-      <div className="row">
+      <motion.div
+        className="row mt-4 flex justify-center gap-6"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+      >
         <a href="https://vite.dev" target="_blank">
           <img src="/vite.svg" className="logo vite" alt="Vite logo" />
         </a>
@@ -26,11 +38,14 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
+      </motion.div>
+
+      <p className="text-center mt-6 text-gray-600">
+        Click on the Tauri, Vite, and React logos to learn more.
+      </p>
 
       <form
-        className="row"
+        className="row mt-4 flex justify-center gap-2"
         onSubmit={(e) => {
           e.preventDefault();
           greet();
@@ -38,12 +53,26 @@ function App() {
       >
         <input
           id="greet-input"
+          className="border border-gray-300 rounded px-3 py-1"
           onChange={(e) => setName(e.currentTarget.value)}
           placeholder="Enter a name..."
         />
-        <button type="submit">Greet</button>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition"
+        >
+          Greet
+        </button>
       </form>
-      <p>{greetMsg}</p>
+
+      <motion.p
+        className="text-center mt-4 text-lg text-green-600"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: greetMsg ? 1 : 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        {greetMsg}
+      </motion.p>
     </main>
   );
 }
