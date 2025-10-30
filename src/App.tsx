@@ -2,11 +2,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
+import { useTheme } from "./hooks/useTheme";
 import "./App.css";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
+  const { theme, setTheme, accent, setAccent } = useTheme();
 
   async function greet() {
     setGreetMsg(await invoke("greet", { name }));
@@ -15,7 +17,8 @@ function App() {
   return (
     <main className="container">
       <motion.h1
-        className="text-4xl font-bold text-center mt-8 text-blue-500"
+        className="text-4xl font-bold text-center mt-8"
+        style={{ color: `rgb(${accent}})` }}
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -59,7 +62,11 @@ function App() {
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition"
+          className="text-white px-4 py-1 rounded transition"
+          style={{
+            backgroundColor: `rgb(${accent})`,
+            boxShadow: `0 2px 6px rgba(${accent}, 0.4)`
+          }}
         >
           Greet
         </button>
@@ -73,6 +80,29 @@ function App() {
       >
         {greetMsg}
       </motion.p>
+      <div className="flex gap-4 justify-center mt-8">
+        <button
+          className="px-4 py-2 rounded border"
+          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+        >
+          Toggle {theme === "light" ? "Dark" : "Light"} Mode
+        </button>
+
+        <input
+          type="color"
+          onChange={(e) => {
+            const hex = e.target.value;
+            const rgb = parseInt(hex.slice(1, 7), 16);
+            const r = (rgb >> 16) & 255;
+            const g = (rgb >> 8) & 255;
+            const b = rgb & 255;
+            setAccent(`${r} ${g} ${b}`);
+          }}
+          className="w-10 h-10 cursor-pointer border rounded"
+          title="Pick accent color"
+        />
+      </div>
+
     </main>
   );
 }

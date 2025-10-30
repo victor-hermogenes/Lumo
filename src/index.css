@@ -1,0 +1,19 @@
+@import "./theme.css";
+
+/* App-wide base styles */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.test-text {
+  @apply text-blue-500 text-3xl font-bold text-center mt-10;
+}
