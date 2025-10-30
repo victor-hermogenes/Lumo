@@ -121,3 +121,11 @@ body {
   font-family: sans-serif;
   background-color: #f9fafb;
 }
+
+.text-accent {
+  color: rgb(var(--accent));
+}
+
+.bg-accent {
+  background-color: rgb(var(--accent));
+}

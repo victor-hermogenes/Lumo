@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* Root variable with a default accent */
+:root {
+  --accent: 59 130 246; /* blue-500 */
+}
+
+/* Theme definitions */
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: 249 250 251;
+  --text: 17 24 39;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: 17 24 39;
+  --text: 243 244 246;
+}
+
+/* Basic body styling to visualize */
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--text));
+  transition: background-color 0.3s, color 0.3s;
+}
