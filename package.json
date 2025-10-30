@@ -1,50 +1,26 @@
 {
   "name": "lumo",
-  "version": "1.0.0",
-  "description": "Lumo — A minimalist, local-first finance tracker for creatives. Built with Tauri, React, TailwindCSS, and SQLite.",
-  "author": "Victor Gonzalez Hermogenes (Victor Galliardis)",
-  "license": "MIT",
   "private": true,
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
-    "tauri": "tauri",
-    "tauri:dev": "tauri dev",
-    "tauri:build": "tauri build",
-    "lint": "eslint . --ext .ts,.tsx"
+    "tauri": "tauri"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.90.5",
-    "@tauri-apps/api": "^2.0.0",
-    "@tauri-apps/plugin-sql": "^2.0.0",
-    "clsx": "^2.1.1",
-    "framer-motion": "^11.0.0",
-    "lucide-react": "^0.468.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.28.0",
-    "zustand": "^4.5.4"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-opener": "^2"
   },
   "devDependencies": {
-    "@types/node": "^24.9.2",
-    "@types/react": "^18.3.5",
-    "@types/react-dom": "^18.3.2",
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "@typescript-eslint/parser": "^7.0.2",
-    "@vitejs/plugin-react": "^4.3.1",
-    "autoprefixer": "^10.4.19",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-react": "^7.34.2",
-    "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.11",
-    "typescript": "^5.5.4",
-    "vite": "^7.1.12"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4",
+    "@tauri-apps/cli": "^2"
   }
 }
