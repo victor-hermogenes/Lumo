@@ -22,6 +22,8 @@ src-tauri/Cargo.lock
 src-tauri/tauri.conf.json.bak
 src-tauri/.cargo/
 src-tauri/*.rs.bk
+/target
+/.cargo
 
 # Environment files
 .env
