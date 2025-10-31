@@ -6,6 +6,7 @@ mod services;
 mod bank;
 mod transactions; 
 mod settings;  
+mod backup;
 
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -38,6 +39,8 @@ pub fn run() {
             settings::get_settings,
             settings::reset_settings,
             settings::update_settings,
+
+            backup::export_backup,
 
         ])
         .run(tauri::generate_context!())
